@@ -4,8 +4,8 @@ const path = require("path");
 
 const rootDir = __dirname;
 const productsFile = path.join(rootDir, "products.json");
-const port = Number(process.env.PORT || 3000);
-const host = process.env.HOST || "127.0.0.1";
+const port = Number(process.env.PORT || 4000);
+const host = process.env.HOST || "0.0.0.0";
 const adminPassword = process.env.ADMIN_PASSWORD || "tanjim77";
 
 const allowedImages = new Set([
