@@ -1,0 +1,82 @@
+[
+  {
+    "id": "fresh-seedlings",
+    "name": "Fresh Seedlings",
+    "category": "seedling",
+    "image": "Img/seedling.jpeg",
+    "description": "Small healthy starts for vegetables, fruits, herbs, and mixed garden beds.",
+    "tags": ["Small size", "Fresh roots"],
+    "search": "fresh seedlings vegetable fruit herb small roots garden farm balcony",
+    "orderText": "Order Seedlings"
+  },
+  {
+    "id": "small-seedling-tray",
+    "name": "Small Seedling Tray",
+    "category": "seedling",
+    "image": "Img/small seedling.jpeg",
+    "description": "Compact nursery seedlings for balcony pots, small gardens, and quick seasonal planting.",
+    "tags": ["Tray stock", "Easy planting"],
+    "search": "small seedling tray compact nursery balcony pots garden seasonal planting",
+    "orderText": "Order Seedlings"
+  },
+  {
+    "id": "little-grown-plants",
+    "name": "Little-grown Plants",
+    "category": "young",
+    "image": "Img/grown seedling.jpeg",
+    "description": "Young plants with more growth than seedlings, but still easy to carry and plant.",
+    "tags": ["Young plants", "Not full trees"],
+    "search": "little-grown young plant sapling not full tree garden rooftop farm",
+    "orderText": "Order Plants"
+  },
+  {
+    "id": "healthy-young-saplings",
+    "name": "Healthy Young Saplings",
+    "category": "young",
+    "image": "Img/grown seedling2.jpeg",
+    "description": "Stronger young saplings for rooftops, farms, and home gardens that need a head start.",
+    "tags": ["Strong leaves", "Garden ready"],
+    "search": "healthy young saplings stronger leaves rooftop farm home garden head start",
+    "orderText": "Order Plants"
+  },
+  {
+    "id": "flowering-plants",
+    "name": "Flowering Plants",
+    "category": "flower",
+    "image": "Img/flower.jpeg",
+    "description": "Colorful flowering plants for entrances, balconies, rooftops, and visitor spaces.",
+    "tags": ["Colorful", "Decorative"],
+    "search": "flowers flowering plants colorful balcony rooftop entrance decoration garden",
+    "orderText": "Order Flowers"
+  },
+  {
+    "id": "bright-flower-pots",
+    "name": "Bright Flower Pots",
+    "category": "flower",
+    "image": "Img/flowers2.jpeg",
+    "description": "Ready flower pots for patios, front doors, walkways, and outdoor seating corners.",
+    "tags": ["Ready pots", "Outdoor color"],
+    "search": "bright flower pots patios front doors walkways outdoor seating color",
+    "orderText": "Order Flowers"
+  },
+  {
+    "id": "garden-flower-mix",
+    "name": "Garden Flower Mix",
+    "category": "flower",
+    "image": "Img/flower3.jpeg",
+    "description": "A mixed flower option for garden borders, visitor areas, and fresh decorative planting.",
+    "tags": ["Mixed flowers", "Garden border"],
+    "search": "garden flower mix mixed flowers border visitor areas decorative planting",
+    "orderText": "Order Flowers"
+  },
+  {
+    "id": "seasonal-nursery-stock",
+    "name": "Seasonal Nursery Stock",
+    "category": "seasonal",
+    "image": "Img/backgrownd.jpeg",
+    "description": "A seasonal collection from the nursery, selected from what is fresh and available now.",
+    "tags": ["Seasonal", "Fresh stock"],
+    "search": "seasonal nursery stock fresh available now collection seedlings plants flowers",
+    "orderText": "Ask Availability"
+  }
+]

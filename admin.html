@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Paharpur Agro Tourism admin product manager.">
+    <title>Admin | Paharpur Agro Tourism</title>
+    <style>
+        :root {
+            --leaf: #1f6f43;
+            --leaf-deep: #123f2a;
+            --leaf-soft: #e8f5ea;
+            --sun: #f4b64d;
+            --paper: #ffffff;
+            --ink: #20362b;
+            --muted: #68776e;
+            --line: rgba(31, 111, 67, 0.15);
+            --shadow: 0 24px 70px rgba(28, 63, 43, 0.14);
+            --radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 12% 8%, rgba(244, 182, 77, 0.2), transparent 28rem),
+                radial-gradient(circle at 90% 14%, rgba(31, 111, 67, 0.12), transparent 26rem),
+                linear-gradient(180deg, #fffdf7 0%, #f5fbf4 58%, #fffaf0 100%);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        .wrap {
+            width: min(1140px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            border-bottom: 1px solid var(--line);
+            background: rgba(255, 250, 240, 0.9);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 22px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .brand img {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(168, 90, 50, 0.22);
+            background: var(--paper);
+        }
+
+        .brand strong {
+            display: block;
+            color: var(--leaf-deep);
+            font-size: 1rem;
+            line-height: 1.08;
+        }
+
+        .brand span span {
+            display: block;
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a {
+            padding: 10px 12px;
+            border-radius: var(--radius);
+            color: #42564a;
+            font-size: 0.92rem;
+            font-weight: 800;
+        }
+
+        .nav-links a:hover {
+            background: rgba(31, 111, 67, 0.09);
+            color: var(--leaf-deep);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 12px 18px;
+            border: 1px solid transparent;
+            border-radius: var(--radius);
+            background: var(--leaf);
+            color: #fff;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 14px 30px rgba(31, 111, 67, 0.22);
+            transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: var(--leaf-deep);
+            box-shadow: 0 18px 38px rgba(31, 111, 67, 0.27);
+        }
+
+        .btn.secondary {
+            background: var(--paper);
+            color: var(--leaf-deep);
+            border-color: var(--line);
+            box-shadow: none;
+        }
+
+        .btn.secondary:hover {
+            background: var(--leaf-soft);
+        }
+
+        .btn.danger {
+            background: #9f2f24;
+            box-shadow: none;
+        }
+
+        .btn.danger:hover {
+            background: #7e241b;
+        }
+
+        main {
+            padding: 64px 0 90px;
+        }
+
+        .page-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        .page-head h1 {
+            margin: 0;
+            color: var(--leaf-deep);
+            font-size: clamp(2.2rem, 5vw, 4.4rem);
+            line-height: 1.05;
+            letter-spacing: 0;
+        }
+
+        .page-head p {
+            max-width: 460px;
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .admin-shell {
+            display: grid;
+            grid-template-columns: 0.78fr 1.22fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .admin-card {
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.82);
+            box-shadow: 0 16px 42px rgba(33, 53, 43, 0.08);
+        }
+
+        .admin-card h2,
+        .admin-card h3 {
+            margin: 0;
+            color: var(--leaf-deep);
+            line-height: 1.12;
+        }
+
+        .admin-card p,
+        .admin-note {
+            color: var(--muted);
+        }
+
+        .admin-note {
+            margin: 10px 0 0;
+            font-size: 0.88rem;
+        }
+
+        .admin-form {
+            display: grid;
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .form-row {
+            display: grid;
+            gap: 7px;
+        }
+
+        .form-row label {
+            color: var(--leaf-deep);
+            font-size: 0.86rem;
+            font-weight: 900;
+        }
+
+        .form-row input,
+        .form-row select,
+        .form-row textarea {
+            width: 100%;
+            min-height: 46px;
+            padding: 10px 12px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            outline: 0;
+            background: #fff;
+            color: var(--ink);
+            font-weight: 750;
+        }
+
+        .form-row textarea {
+            min-height: 92px;
+            resize: vertical;
+            line-height: 1.45;
+        }
+
+        .admin-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .admin-status {
+            min-height: 24px;
+            margin: 4px 0 0;
+            color: var(--leaf);
+            font-weight: 900;
+        }
+
+        .admin-products {
+            display: grid;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .admin-product {
+            display: grid;
+            grid-template-columns: 82px minmax(0, 1fr) auto;
+            gap: 14px;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: #fff;
+        }
+
+        .admin-product img {
+            width: 82px;
+            height: 64px;
+            border-radius: var(--radius);
+            object-fit: cover;
+        }
+
+        .admin-product strong {
+            display: block;
+            color: var(--leaf-deep);
+            line-height: 1.2;
+        }
+
+        .admin-product span {
+            display: block;
+            margin-top: 3px;
+            color: var(--muted);
+            font-size: 0.84rem;
+        }
+
+        body:not(.admin-active) .admin-only {
+            display: none !important;
+        }
+
+        footer {
+            padding: 26px 0;
+            border-top: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.56);
+            color: var(--muted);
+        }
+
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 0.92rem;
+        }
+
+        @media (max-width: 900px) {
+            .nav,
+            .page-head {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .admin-shell {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            main {
+                padding-top: 42px;
+            }
+
+            .nav-links {
+                width: 100%;
+                overflow-x: auto;
+            }
+
+            .admin-product {
+                grid-template-columns: 70px minmax(0, 1fr);
+            }
+
+            .admin-product .btn {
+                grid-column: 1 / -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrap nav">
+            <a class="brand" href="index.html" aria-label="Paharpur Agro Tourism home">
+                <img src="Img/logo.jpeg" alt="Paharpur Agro Tourism logo">
+                <span>
+                    <strong>Paharpur Agro Tourism</strong>
+                    <span>Admin product manager</span>
+                </span>
+            </a>
+            <nav class="nav-links" aria-label="Admin navigation">
+                <a href="index.html">Website</a>
+                <a href="index.html#products">Shop</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="wrap">
+            <div class="page-head">
+                <div>
+                    <h1>Admin panel</h1>
+                </div>
+                <p>Add, delete, and reset shop products. Product data is saved in <strong>products.json</strong> through the local server.</p>
+            </div>
+
+            <div class="admin-shell">
+                <div class="admin-card">
+                    <h2>Login</h2>
+                    <form class="admin-form" id="adminLoginForm">
+                        <div class="form-row">
+                            <label for="adminPassword">Admin password</label>
+                            <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Enter password">
+                        </div>
+                        <div class="admin-actions">
+                            <button class="btn" type="submit">Open Admin</button>
+                            <button class="btn secondary admin-only" id="adminLogout" type="button">Close Admin</button>
+                        </div>
+                        <p class="admin-status" id="adminStatus" aria-live="polite"></p>
+                    </form>
+                </div>
+
+                <div class="admin-card admin-only">
+                    <h3>Add product</h3>
+                    <form class="admin-form" id="productForm">
+                        <div class="form-row">
+                            <label for="productName">Product name</label>
+                            <input id="productName" required placeholder="Example: Mango Seedling">
+                        </div>
+                        <div class="form-row">
+                            <label for="productDescription">Description</label>
+                            <textarea id="productDescription" required placeholder="Short product description"></textarea>
+                        </div>
+                        <div class="form-row">
+                            <label for="productCategory">Category</label>
+                            <select id="productCategory" required>
+                                <option value="seedling">Seedlings</option>
+                                <option value="young">Little-grown</option>
+                                <option value="flower">Flowers</option>
+                                <option value="seasonal">Seasonal</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label for="productImage">Image</label>
+                            <select id="productImage" required>
+                                <option value="Img/seedling.jpeg">seedling.jpeg</option>
+                                <option value="Img/small seedling.jpeg">small seedling.jpeg</option>
+                                <option value="Img/grown seedling.jpeg">grown seedling.jpeg</option>
+                                <option value="Img/grown seedling2.jpeg">grown seedling2.jpeg</option>
+                                <option value="Img/flower.jpeg">flower.jpeg</option>
+                                <option value="Img/flowers2.jpeg">flowers2.jpeg</option>
+                                <option value="Img/flower3.jpeg">flower3.jpeg</option>
+                                <option value="Img/backgrownd.jpeg">backgrownd.jpeg</option>
+                                <option value="Img/logo.jpeg">logo.jpeg</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label for="productTags">Tags</label>
+                            <input id="productTags" placeholder="Small size, Fresh roots">
+                        </div>
+                        <div class="admin-actions">
+                            <button class="btn" type="submit">Add Product</button>
+                            <button class="btn secondary" id="resetProducts" type="button">Reset Products</button>
+                        </div>
+                    </form>
+
+                    <div class="admin-products" id="adminProducts" aria-label="Admin product list"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap footer-row">
+            <span>&copy; 2026 Paharpur Agro Tourism. All rights reserved.</span>
+            <span>Admin product manager.</span>
+        </div>
+    </footer>
+
+    <script>
+        const adminSessionKey = "paharpurAdminPassword";
+        const adminLoginForm = document.querySelector("#adminLoginForm");
+        const adminPassword = document.querySelector("#adminPassword");
+        const adminLogout = document.querySelector("#adminLogout");
+        const productForm = document.querySelector("#productForm");
+        const productName = document.querySelector("#productName");
+        const productDescription = document.querySelector("#productDescription");
+        const productCategory = document.querySelector("#productCategory");
+        const productImage = document.querySelector("#productImage");
+        const productTags = document.querySelector("#productTags");
+        const resetProducts = document.querySelector("#resetProducts");
+        const adminStatus = document.querySelector("#adminStatus");
+        const adminProducts = document.querySelector("#adminProducts");
+        let products = [];
+        let adminPasswordToken = sessionStorage.getItem(adminSessionKey) || "";
+
+        const categoryLabels = {
+            seedling: "Seedlings",
+            young: "Little-grown",
+            flower: "Flowers",
+            seasonal: "Seasonal"
+        };
+
+        function escapeHtml(value) {
+            return String(value).replace(/[&<>"']/g, (character) => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                "\"": "&quot;",
+                "'": "&#039;"
+            }[character]));
+        }
+
+        async function apiRequest(path, options = {}) {
+            const response = await fetch(path, {
+                ...options,
+                headers: {
+                    "Content-Type": "application/json",
+                    ...(adminPasswordToken ? { "x-admin-password": adminPasswordToken } : {}),
+                    ...(options.headers || {})
+                }
+            });
+            const data = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+                throw new Error(data.error || "Request failed.");
+            }
+
+            return data;
+        }
+
+        function setAdminStatus(message) {
+            adminStatus.textContent = message;
+            if (!message) return;
+            window.setTimeout(() => {
+                if (adminStatus.textContent === message) adminStatus.textContent = "";
+            }, 3200);
+        }
+
+        function setAdminMode(isOpen) {
+            document.body.classList.toggle("admin-active", isOpen);
+        }
+
+        function renderAdminProducts() {
+            adminProducts.innerHTML = products.map((product) => `
+                <div class="admin-product">
+                    <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}">
+                    <div>
+                        <strong>${escapeHtml(product.name)}</strong>
+                        <span>${escapeHtml(categoryLabels[product.category] || "Product")} - ${escapeHtml(product.image.replace("Img/", ""))}</span>
+                    </div>
+                    <button class="btn danger delete-product" type="button" data-product-id="${escapeHtml(product.id)}">Delete</button>
+                </div>
+            `).join("");
+        }
+
+        async function loadProducts() {
+            try {
+                products = await apiRequest("/api/products");
+                renderAdminProducts();
+            } catch (error) {
+                setAdminStatus("Products could not load. Start the server with npm start.");
+            }
+        }
+
+        function deleteProduct(productId) {
+            apiRequest(`/api/products/${encodeURIComponent(productId)}`, { method: "DELETE" })
+                .then((updatedProducts) => {
+                    products = updatedProducts;
+                    renderAdminProducts();
+                    setAdminStatus("Product deleted.");
+                })
+                .catch((error) => setAdminStatus(error.message));
+        }
+
+        document.addEventListener("click", (event) => {
+            const deleteButton = event.target.closest(".delete-product");
+            if (!deleteButton) return;
+
+            deleteProduct(deleteButton.dataset.productId);
+        });
+
+        adminLoginForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const password = adminPassword.value;
+
+            apiRequest("/api/admin/login", {
+                method: "POST",
+                body: JSON.stringify({ password })
+            }).then(() => {
+                adminPasswordToken = password;
+                sessionStorage.setItem(adminSessionKey, password);
+                setAdminMode(true);
+                adminPassword.value = "";
+                setAdminStatus("Admin panel opened.");
+                loadProducts();
+            }).catch((error) => {
+                adminPasswordToken = "";
+                sessionStorage.removeItem(adminSessionKey);
+                setAdminMode(false);
+                setAdminStatus(error.message);
+            });
+        });
+
+        adminLogout.addEventListener("click", () => {
+            adminPasswordToken = "";
+            sessionStorage.removeItem(adminSessionKey);
+            setAdminMode(false);
+            setAdminStatus("");
+        });
+
+        productForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const name = productName.value.trim();
+            const description = productDescription.value.trim();
+            const category = productCategory.value;
+            const image = productImage.value;
+            const tags = productTags.value
+                .split(",")
+                .map((tag) => tag.trim())
+                .filter(Boolean);
+
+            if (!name || !description) {
+                setAdminStatus("Product name and description are required.");
+                return;
+            }
+
+            apiRequest("/api/products", {
+                method: "POST",
+                body: JSON.stringify({
+                    name,
+                    category,
+                    image,
+                    description,
+                    tags,
+                    orderText: category === "seasonal" ? "Ask Availability" : `Order ${categoryLabels[category] || "Product"}`
+                })
+            }).then((updatedProducts) => {
+                products = updatedProducts;
+                renderAdminProducts();
+                productForm.reset();
+                setAdminStatus("Product added to the shop.");
+            }).catch((error) => {
+                setAdminStatus(error.message);
+            });
+        });
+
+        resetProducts.addEventListener("click", () => {
+            apiRequest("/api/products/reset", { method: "POST" })
+                .then((updatedProducts) => {
+                    products = updatedProducts;
+                    renderAdminProducts();
+                    setAdminStatus("Products reset to the demo list.");
+                })
+                .catch((error) => setAdminStatus(error.message));
+        });
+
+        setAdminMode(Boolean(adminPasswordToken));
+        loadProducts();
+    </script>
+</body>
+</html>
